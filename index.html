@@ -148,7 +148,12 @@ a{color:inherit}
 .items strong{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;padding-left:10px;text-transform:uppercase}
 .items span{display:block;padding-left:10px;font-size:1.12rem}
 .items .go{font-family:var(--marker);color:var(--red);font-size:1.1rem;margin-top:4px}
-.items a{display:inline-block;padding:0 14px 10px 24px;font-weight:700;color:var(--red)}
+.visit-row{padding:2px 14px 12px 24px}
+.items a.visit,.gvisit{display:inline-block;padding:6px 28px 6px 18px;background:var(--red);color:var(--paper);font-family:var(--display);font-size:1.15rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+  clip-path:polygon(0 0,100% 0,92% 100%,0 100%);transform:skewX(-6deg)}
+.items a.visit:hover,.items a.visit:focus-visible,.gvisit:hover,.gvisit:focus-visible{background:var(--paper);color:var(--ink);outline:none}
+.gvisit{margin-top:12px}
+.gvisit[hidden]{display:none}
 
 /* ---------- galeri ---------- */
 #gal{position:fixed;inset:0;z-index:45;display:none;background:rgba(0,0,0,.85);overflow-y:auto;
@@ -423,7 +428,7 @@ a{color:inherit}
 <div id="gal" role="dialog" aria-modal="true" aria-labelledby="g-title" aria-hidden="true">
   <div class="gpanel">
     <div class="ghead">
-      <div><h3 id="g-title"></h3><p id="g-note"></p></div>
+      <div><h3 id="g-title"></h3><p id="g-note"></p><a class="gvisit" id="g-visit" target="_blank" rel="noopener" hidden></a></div>
       <button class="gclose" id="g-close"><b>✕</b> <span data-i18n="g_close">Tutup</span></button>
     </div>
     <div class="gmain" id="g-main">
@@ -509,10 +514,10 @@ const PROJECTS = [
         gallery:[
           { src:"media/blender/radio.jpg", caption:{id:"Radio", en:"Radio"} }
         ] },
-        { title:{id:"Mansion", en:"Mansion"},
-          note:{id:"Mansion low polly dengan langit cerah", en:"Mansion with a low-poly style and clear sky."},
-          link:"",
-          gallery:[
+      { title:{id:"Mansion", en:"Mansion"},
+        note:{id:"Mansion low polly dengan langit cerah", en:"Mansion with a low-poly style and clear sky."},
+        link:"",
+        gallery:[
           { src:"media/blender/mansion.jpg", caption:{id:"Mansion", en:"Mansion"} }
         ] },
     ] },
@@ -549,12 +554,17 @@ const PROJECTS = [
     desc:{id:"Website yang rapi, cepat, dan nyaman dibuka di layar apa pun.", en:"Clean, fast websites that feel good on any screen."},
     tags:["HTML","CSS","JavaScript",{id:"Responsif",en:"Responsive"}],
     items:[
-      { title:{id:"Judul website 1", en:"Website title 1"},
-        note:{id:"Tulis untuk siapa website ini dan apa fungsinya.", en:"Write who the website is for and what it does."},
-        link:"" },
-      { title:{id:"Judul website 2", en:"Website title 2"},
-        note:{id:"Tulis untuk siapa website ini dan apa fungsinya.", en:"Write who the website is for and what it does."},
-        link:"" }
+      // Contoh website dengan link langsung (hapus tanda // di depan tiap baris untuk memakai):
+      // { title:{id:"Nama Website", en:"Website Name"},
+      //   note:{id:"Penjelasan singkat website ini.", en:"A short description of this website."},
+      //   link:"https://alamat-websitemu.vercel.app",
+      //   gallery:[ { src:"media/web/web1.jpg", caption:{id:"Beranda", en:"Home page"} } ] },
+      { title:{id:"Kelas Informatika", en:"Class informatics gallery"},
+        note:{id:"Gallery kelas informatika.", en:"Gallery of Informatics class."},
+        link:"https://gallery-informatika.vercel.app/",
+        gallery:[
+          { src:"media/web/w1.png", caption:{id:"Kelas Informatika", en:"Class Infomatika"} },
+          ] },
     ] },
 
   { id:"figma", name:"UI/UX Figma", sub:{id:"Desain antarmuka", en:"Interface design"},
@@ -582,7 +592,7 @@ const I18N = {
     f_focus:"Fokus", f_focus_v:"Aplikasi, game, 3D, dan UI/UX", f_tools:"Alat",
     sk_marker:"Status kemampuan", sk_title:"Skill", sk_aria:"{n} level {lv} dari 10",
     r_expert:"Ahli", r_adv:"Mahir", r_mid:"Menengah", r_beg:"Pemula",
-    go:"Lihat galeri ▶ ({n} gambar)", open_proj:"Buka projek",
+    go:"Lihat galeri ▶ ({n} gambar)", open_proj:"Buka projek", visit_site:"Kunjungi website",
     c_marker:"Kirim pesan lewat email", c_name:"Nama kamu", c_name_ph:"Nama lengkap", c_subj:"Subjek", c_subj_ph:"Contoh: Kerja sama proyek",
     c_msg:"Pesan", c_msg_ph:"Tulis pesanmu di sini", c_send:"Kirim email", c_copy:"Salin alamat email",
     c_err:"Tulis pesanmu dulu sebelum mengirim.", c_open:"Membuka aplikasi email kamu…", c_copied:"Alamat email tersalin: ", c_manual:"Salin manual: ",
@@ -602,7 +612,7 @@ const I18N = {
     f_focus:"Focus", f_focus_v:"Apps, games, 3D, and UI/UX", f_tools:"Tools",
     sk_marker:"Skill status", sk_title:"Skills", sk_aria:"{n} level {lv} out of 10",
     r_expert:"Expert", r_adv:"Advanced", r_mid:"Intermediate", r_beg:"Beginner",
-    go:"View gallery ▶ ({n} images)", open_proj:"Open project",
+    go:"View gallery ▶ ({n} images)", open_proj:"Open project", visit_site:"Visit website",
     c_marker:"Send a message by email", c_name:"Your name", c_name_ph:"Full name", c_subj:"Subject", c_subj_ph:"Example: Project collaboration",
     c_msg:"Message", c_msg_ph:"Write your message here", c_send:"Send email", c_copy:"Copy email address",
     c_err:"Please write your message first.", c_open:"Opening your email app…", c_copied:"Email address copied: ", c_manual:"Copy manually: ",
@@ -692,6 +702,9 @@ function renderPlist(){
 }
 renderPlist();
 
+const safeLink = u => /^https?:\/\//i.test(u || '');
+const visitLabel = (p, it) => (L(it.linkLabel) || (p.id === 'web' ? T('visit_site') : T('open_proj'))) + ' ▶';
+
 function showProject(i, animate=true){
   const p = PROJECTS[i]; curP = i;
   $$('#plist .menu-btn').forEach((b, k) => b.classList.toggle('on', k === i));
@@ -702,7 +715,7 @@ function showProject(i, animate=true){
     </div>
     <p>${esc(L(p.desc))}</p>
     <ul class="chips">${p.tags.map(tg => `<li>${esc(L(tg))}</li>`).join('')}</ul>
-    <ul class="items">${p.items.map((it, n) => `<li><button class="item-btn" data-pi="${i}" data-ii="${n}"><strong>${esc(L(it.title))}</strong><span>${esc(L(it.note))}</span><span class="go">${esc(T('go').replace('{n}', galleryOf(it).length))}</span></button>${it.link ? `<a href="${esc(it.link)}" target="_blank" rel="noopener">${esc(T('open_proj'))}</a>` : ''}</li>`).join('')}</ul>`;
+    <ul class="items">${p.items.map((it, n) => `<li><button class="item-btn" data-pi="${i}" data-ii="${n}"><strong>${esc(L(it.title))}</strong><span>${esc(L(it.note))}</span><span class="go">${esc(T('go').replace('{n}', galleryOf(it).length))}</span></button>${safeLink(it.link) ? `<div class="visit-row"><a class="visit" href="${esc(it.link)}" target="_blank" rel="noopener">${esc(visitLabel(p, it))}</a></div>` : ''}</li>`).join('')}</ul>`;
   if (animate && !reduce){
     detail.classList.remove('swap'); void detail.offsetWidth; detail.classList.add('swap');
   }
@@ -741,6 +754,9 @@ function openGallery(pi, ii, opener){
   gList = galleryOf(it); gIcon = p.icon; gOpener = opener;
   $('#g-title').textContent = L(it.title);
   $('#g-note').textContent = L(it.note);
+  const gv = $('#g-visit');
+  if (safeLink(it.link)){ gv.href = it.link; gv.textContent = visitLabel(p, it); gv.hidden = false; }
+  else { gv.hidden = true; gv.removeAttribute('href'); }
   gThumbs.innerHTML = gList.map((g, k) =>
     `<button class="th" data-k="${k}" aria-label="${esc(T('g_img'))} ${k + 1}">${slideHTML(g, k, gIcon)}</button>`).join('');
   galOpen = true;
