@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="id" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Azka Zakiyyan | Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Abril+Fatface&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e60012; --red-dark:#8f000b; --ink:#000; --paper:#fff;
+  --display:'Anton','Impact','Arial Narrow',sans-serif;
+  --marker:'Permanent Marker','Comic Sans MS',cursive;
+  --serif:'Abril Fatface','Georgia',serif;
+  --body:'Barlow Condensed','Arial Narrow',sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;height:100%;background:var(--red);color:var(--ink);font-family:var(--body);font-weight:600;font-size:1.2rem;line-height:1.3;overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--paper);outline-offset:3px}
+
+/* ---------- latar ---------- */
+.bg{position:fixed;inset:0;z-index:0;background:var(--red);overflow:hidden}
+.bg::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle,rgba(0,0,0,.32) 2.2px,transparent 2.8px) 0 0/16px 16px;
+  -webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 55%);mask-image:linear-gradient(115deg,#000 0%,transparent 55%)}
+.bg i{position:absolute;background:var(--ink)}
+.bg i:nth-child(1){left:-10%;bottom:-6%;width:70%;height:38%;clip-path:polygon(0 30%,100% 0,82% 100%,0 100%)}
+.bg i:nth-child(2){right:-8%;top:-8%;width:46%;height:42%;clip-path:polygon(30% 0,100% 0,100% 100%,0 70%)}
+.bg i:nth-child(3){right:6%;bottom:8%;width:22%;height:16%;background:var(--paper);clip-path:polygon(0 40%,100% 0,70% 100%,20% 90%);opacity:.95}
+
+#app{position:relative;z-index:1;height:100%;overflow:hidden}
+.view{position:absolute;inset:0;display:none;overflow-y:auto;overflow-x:hidden;padding:20px 20px 100px;-webkit-overflow-scrolling:touch}
+.view.active{display:block}
+
+/* ---------- huruf ransom ---------- */
+.rw{display:inline-block;white-space:nowrap;margin:0 .14em .1em 0}
+.rl{display:inline-block;padding:.02em .1em .0em;margin-right:-.03em;line-height:1.05;border:3px solid var(--ink);font-family:var(--display);text-transform:uppercase}
+.v0{background:var(--paper);color:var(--ink)}
+.v1{background:var(--ink);color:var(--paper);border-color:var(--paper)}
+.v2{background:var(--red);color:var(--paper)}
+.v3{background:var(--paper);color:var(--red)}
+.v4{background:var(--ink);color:var(--red);border-color:var(--red)}
+.f-m{font-family:var(--marker);text-transform:none}
+.f-s{font-family:var(--serif);text-transform:none}
+.ransom{font-size:clamp(2.2rem,8.5vw,4.6rem);filter:drop-shadow(5px 5px 0 rgba(0,0,0,.85));margin:0}
+
+/* ---------- tombol kembali ---------- */
+.back{display:inline-block;margin:0 0 22px;padding:10px 26px 10px 18px;border:0;cursor:pointer;background:var(--ink);color:var(--paper);
+  font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;text-transform:uppercase;
+  clip-path:polygon(0 0,100% 0,92% 100%,4% 100%);transform:skewX(-8deg)}
+.back b{color:var(--red);margin-right:.4em}
+.back:hover,.back:focus-visible{background:var(--paper);color:var(--ink);outline:none}
+
+/* ---------- menu ---------- */
+.mw{filter:drop-shadow(6px 6px 0 var(--ink));margin:0 0 16px;transition:transform .18s cubic-bezier(.3,1.6,.5,1)}
+.mw:nth-child(odd){transform:rotate(-2deg)}
+.mw:nth-child(even){transform:rotate(1.4deg) translateX(18px)}
+.mw:hover,.mw:focus-within{transform:rotate(-1deg) translateX(22px)}
+.menu-btn{display:flex;align-items:baseline;gap:14px;width:100%;padding:12px 30px 12px 44px;border:0;cursor:pointer;text-align:left;position:relative;
+  background:var(--paper);color:var(--ink);font-family:var(--display);font-size:clamp(2rem,6.5vw,3.3rem);line-height:1;letter-spacing:.03em;text-transform:uppercase;
+  clip-path:polygon(0 0,100% 7%,96% 100%,3% 93%)}
+.menu-btn small{font-family:var(--body);font-weight:700;font-size:1.05rem;letter-spacing:.02em;text-transform:none;opacity:.75}
+.menu-btn .mk{position:absolute;left:12px;top:50%;width:0;height:0;transform:translateY(-50%);border-left:20px solid var(--red);border-top:13px solid transparent;border-bottom:13px solid transparent;opacity:0;transition:opacity .1s}
+.menu-btn:hover,.menu-btn:focus-visible,.menu-btn.on{background:var(--ink);color:var(--paper);outline:none}
+.menu-btn:hover .mk,.menu-btn:focus-visible .mk,.menu-btn.on .mk{opacity:1}
+.menu-btn:hover small,.menu-btn:focus-visible small,.menu-btn.on small{color:var(--red);opacity:1}
+
+/* ---------- beranda ---------- */
+.home{min-height:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:10px 30px;align-items:center;max-width:1180px;margin:0 auto}
+.stage{position:relative;justify-self:center;width:min(100%,520px);aspect-ratio:400/500}
+.stage svg.burst{position:absolute;inset:-6%;width:112%;height:112%}
+.stage svg.figure{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(8px 8px 0 rgba(0,0,0,.55))}
+.titleblock{display:flex;flex-direction:column;gap:16px}
+.tag{align-self:flex-start;background:var(--ink);color:var(--paper);padding:4px 22px 4px 14px;font-family:var(--marker);font-size:1.4rem;transform:rotate(-2deg);clip-path:polygon(0 0,100% 0,94% 100%,0 100%)}
+.menu{list-style:none;margin:10px 0 0;padding:0 24px 0 0;max-width:470px}
+.hint{font-size:1rem;color:var(--paper);font-weight:700;text-shadow:2px 2px 0 var(--ink);margin:6px 0 0}
+
+/* animasi masuk beranda */
+.view.enter .stage{animation:stageIn .7s cubic-bezier(.2,.9,.2,1) both}
+.view.enter .titleblock > *{animation:slideR .5s cubic-bezier(.2,.9,.2,1) both}
+.view.enter .titleblock > *:nth-child(2){animation-delay:.08s}
+.view.enter .menu .mw{animation:slideR .5s cubic-bezier(.2,.9,.2,1) both}
+.view.enter .menu .mw:nth-child(1){animation-delay:.2s}
+.view.enter .menu .mw:nth-child(2){animation-delay:.3s}
+.view.enter .menu .mw:nth-child(3){animation-delay:.4s}
+@keyframes stageIn{from{opacity:0;transform:translateX(-90px) skewX(8deg)}to{opacity:1;transform:none}}
+@keyframes slideR{from{opacity:0;translate:120px 0}to{opacity:1;translate:0 0}}
+
+/* ---------- kotak putih ---------- */
+.box{background:var(--paper);color:var(--ink);border:5px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:24px 26px}
+.box h3{font-family:var(--display);font-weight:400;font-size:2.3rem;line-height:1.1;margin:0 0 10px;text-transform:uppercase}
+.box p{margin:.4em 0 1em;font-size:1.3rem}
+.marker{font-family:var(--marker);color:var(--red);font-size:1.4rem;line-height:1.3;display:block;margin:0 0 14px;transform:rotate(-1.5deg)}
+.box .marker + h3{margin-top:0}
+.dhead h3{margin-bottom:4px}
+.dhead .marker{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{background:var(--ink);color:var(--paper);padding:3px 16px 3px 12px;font-weight:700;font-size:1.1rem;clip-path:polygon(0 0,100% 0,90% 100%,0 100%)}
+.wrap{max-width:1100px;margin:0 auto}
+.head{margin:0 0 26px}
+
+/* ---------- profil ---------- */
+.about{display:grid;grid-template-columns:minmax(220px,380px) 1fr;gap:30px;align-items:center}
+.about .stage{width:100%}
+.about .box{transform:rotate(1deg)}
+.fact{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:16px 0 0;font-size:1.2rem}
+.fact dt{font-family:var(--marker);color:var(--red)}
+.fact dd{margin:0}
+
+/* ---------- skill ---------- */
+.skills{margin-top:34px;transform:rotate(-.6deg)}
+.sk{display:grid;grid-template-columns:minmax(130px,200px) 1fr minmax(120px,auto);gap:14px;align-items:center;margin:12px 0}
+.sk-n{font-family:var(--display);font-size:1.5rem;line-height:1;text-transform:uppercase}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;transform:skewX(-18deg);padding-right:6px}
+.cells i{height:22px;background:#e4e4e4;border:2px solid var(--ink)}
+.cells i.f{background:var(--red)}
+.view.enter .cells i.f{animation:fillc .3s cubic-bezier(.2,1.4,.4,1) both;animation-delay:calc(var(--k) * 60ms + var(--r) * 110ms + 250ms)}
+@keyframes fillc{from{transform:scaleY(0);opacity:0}to{transform:none;opacity:1}}
+.sk-l{font-family:var(--marker);color:var(--red);font-size:1.25rem;white-space:nowrap}
+.sk-l b{font-family:var(--display);font-weight:400;color:var(--ink);font-size:1.5rem;margin-right:6px}
+
+/* ---------- projek ---------- */
+.proj{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:34px;align-items:start}
+.plist{list-style:none;margin:0;padding:0 18px 0 0}
+.plist .menu-btn{font-size:clamp(1.5rem,4vw,2.2rem);padding:10px 24px 10px 40px}
+.plist .menu-btn small{display:none}
+.detail{transform:rotate(-1deg);position:relative;scroll-margin-top:16px}
+.detail.swap{animation:swap .35s cubic-bezier(.2,.9,.2,1)}
+@keyframes swap{from{opacity:0;translate:60px 0;clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}to{opacity:1;translate:0 0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
+.dhead{display:flex;align-items:center;gap:18px;margin-bottom:14px}
+.ico{flex:none;width:84px;height:84px;background:var(--red);border:4px solid var(--ink);border-radius:50%;display:grid;place-items:center;color:var(--paper)}
+.ico svg{width:54px;height:54px;fill:none;stroke:currentColor;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round}
+.items{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+.items li{border:3px solid var(--ink);background:#f1f1f1;position:relative;transition:background .12s,color .12s,transform .15s}
+.items li::before{content:"";position:absolute;left:-3px;top:-3px;bottom:-3px;width:10px;background:var(--red);pointer-events:none}
+.items li:hover,.items li:focus-within{background:var(--ink);color:var(--paper);transform:translateX(8px)}
+.item-btn{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 14px;cursor:pointer;color:inherit}
+.item-btn:focus-visible{outline:4px solid var(--red);outline-offset:-4px}
+.items strong{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;padding-left:10px;text-transform:uppercase}
+.items span{display:block;padding-left:10px;font-size:1.12rem}
+.items .go{font-family:var(--marker);color:var(--red);font-size:1.1rem;margin-top:4px}
+.items a{display:inline-block;padding:0 14px 10px 24px;font-weight:700;color:var(--red)}
+
+/* ---------- galeri ---------- */
+#gal{position:fixed;inset:0;z-index:45;display:none;background:rgba(0,0,0,.85);overflow-y:auto;
+  padding:calc(env(safe-area-inset-top,0px) + 16px) 14px calc(env(safe-area-inset-bottom,0px) + 28px)}
+#gal.open{display:block}
+.gpanel{max-width:980px;margin:0 auto;background:var(--paper);color:var(--ink);border:5px solid var(--ink);box-shadow:10px 10px 0 var(--red);padding:20px;animation:gin .4s cubic-bezier(.2,.9,.2,1)}
+@keyframes gin{from{opacity:0;translate:0 40px;clip-path:polygon(0 0,100% 0,100% 0,0 0)}to{opacity:1;translate:0 0;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}}
+.ghead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.ghead h3{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,5vw,2.6rem);line-height:1;margin:0;text-transform:uppercase}
+.ghead p{margin:.3em 0 0;font-size:1.15rem}
+.gclose{flex:none;border:0;cursor:pointer;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:1.15rem;letter-spacing:.05em;text-transform:uppercase;padding:8px 18px 8px 24px;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%)}
+.gclose b{color:var(--red);font-weight:400}
+.gclose:hover,.gclose:focus-visible{background:var(--red);outline:none}
+.gmain{position:relative;margin:16px 0 8px;aspect-ratio:16/10;border:4px solid var(--ink);overflow:hidden;background:var(--ink);touch-action:pan-y}
+.gmain img,.th img{width:100%;height:100%;object-fit:cover;display:block}
+.gmain .ph{animation:gswap .3s cubic-bezier(.2,.9,.2,1)}
+.gmain img{animation:gswap .3s cubic-bezier(.2,.9,.2,1)}
+@keyframes gswap{from{opacity:0;translate:40px 0}to{opacity:1;translate:0 0}}
+.gcount{position:absolute;left:0;top:0;z-index:2;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:1.1rem;padding:4px 18px 4px 12px;clip-path:polygon(0 0,100% 0,88% 100%,0 100%)}
+.gnav{position:absolute;top:50%;z-index:2;width:48px;height:64px;border:0;cursor:pointer;background:var(--ink);color:var(--paper);font-size:1.6rem;transform:translateY(-50%) skewX(-10deg)}
+.gnav:hover,.gnav:focus-visible{background:var(--red);outline:none}
+.gnav.prev{left:8px}.gnav.next{right:8px}
+.gcap{font-family:var(--marker);color:var(--red);font-size:1.3rem;min-height:1.5em;margin:4px 0 12px}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.th{aspect-ratio:4/3;border:3px solid var(--ink);padding:0;cursor:pointer;overflow:hidden;background:var(--ink);transition:transform .15s}
+.th:hover,.th:focus-visible{transform:translateY(-4px) rotate(-1.5deg);outline:none}
+.th.on{outline:4px solid var(--red);outline-offset:2px}
+.ph{width:100%;height:100%;display:grid;place-items:center;align-content:center;gap:8px;position:relative;overflow:hidden;font-family:var(--display);text-transform:uppercase}
+.ph::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(0,0,0,.3) 2px,transparent 2.6px) 0 0/14px 14px;-webkit-mask-image:linear-gradient(120deg,#000,transparent 60%);mask-image:linear-gradient(120deg,#000,transparent 60%)}
+.ph::after{content:"";position:absolute;right:-5%;bottom:-8%;width:55%;height:46%;background:rgba(255,255,255,.18);clip-path:polygon(0 50%,100% 0,80% 100%,20% 90%)}
+.ph svg{position:relative;z-index:1;width:30%;max-width:110px;fill:none;stroke:currentColor;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.ph span{position:relative;z-index:1;background:var(--ink);color:var(--paper);letter-spacing:.08em;padding:2px 12px;transform:skewX(-10deg);font-size:clamp(1rem,3.4vw,1.7rem)}
+.th .ph span{font-size:.85rem;padding:1px 8px}
+.th .ph svg{width:34%}
+.p0{background:var(--red);color:var(--paper)}
+.p1{background:var(--ink);color:var(--paper)}.p1 span{background:var(--red)}
+.p2{background:var(--paper);color:var(--ink)}.p2 span{background:var(--red)}
+.p3{background:var(--red-dark);color:var(--paper)}
+
+/* ---------- kontak ---------- */
+.contact{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start}
+.form label{display:block;font-family:var(--marker);color:var(--red);font-size:1.25rem;margin:12px 0 4px}
+.form input,.form textarea{width:100%;border:4px solid var(--ink);background:var(--paper);padding:10px 12px;font-size:1.25rem;border-radius:0}
+.form textarea{min-height:130px;resize:vertical}
+.send{margin-top:18px;border:0;cursor:pointer;background:var(--red);color:var(--paper);font-family:var(--display);font-size:1.7rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:12px 40px 12px 28px;clip-path:polygon(0 0,100% 0,93% 100%,3% 100%);transform:skewX(-8deg);box-shadow:none}
+.send:hover,.send:focus-visible{background:var(--ink);outline:none}
+.copy{margin-left:10px;background:none;border:3px solid var(--ink);padding:8px 16px;cursor:pointer;font-weight:700;font-size:1.1rem}
+.copy:hover,.copy:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.links{list-style:none;margin:0;padding:0 18px 0 0}
+.links .menu-btn{font-size:clamp(1.5rem,4vw,2.1rem);text-decoration:none;display:flex}
+.status{min-height:1.4em;margin:10px 0 0;font-weight:700}
+
+/* ---------- transisi & splash ---------- */
+#wipe{position:fixed;inset:0;z-index:50;display:none;pointer-events:all;overflow:hidden}
+#wipe div{position:absolute;top:-5%;bottom:-5%;left:-25vw;width:150vw;transform:translateX(-130%) skewX(-18deg);display:grid;place-items:center}
+#wipe div:nth-child(1){background:var(--red-dark)}
+#wipe div:nth-child(2){background:var(--red)}
+#wipe div:nth-child(3){background:var(--ink)}
+#wipe .label{font-family:var(--display);color:var(--paper);font-size:clamp(3rem,16vw,9rem);letter-spacing:.05em;text-transform:uppercase;transform:skewX(18deg) rotate(-4deg);text-shadow:8px 8px 0 var(--red)}
+#splash{position:fixed;inset:0;z-index:60;background:var(--ink);display:grid;place-items:center;cursor:pointer;overflow:hidden;padding:20px}
+#splash::before{content:"";position:absolute;inset:0;background:var(--red);clip-path:polygon(0 60%,100% 25%,100% 100%,0 100%);opacity:.95}
+#splash::after{content:"";position:absolute;inset:0;background:var(--paper);clip-path:polygon(0 56%,100% 21%,100% 23%,0 58%)}
+.splash-in{position:relative;z-index:1;text-align:center}
+.splash-in .ransom{font-size:clamp(2.4rem,10vw,5.6rem)}
+.splash-in .rl{opacity:0;animation:pop .35s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes pop{from{opacity:0;transform:scale(2.2) rotate(12deg)}to{opacity:1;transform:none}}
+.press{margin-top:32px;display:inline-block;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:1.4rem;padding:4px 20px;transform:skewX(-10deg);animation:blink 1.1s steps(2) infinite;animation-delay:1.6s;opacity:0}
+@keyframes blink{0%{opacity:1}50%{opacity:.15}100%{opacity:1}}
+
+/* ---------- tombol suara ---------- */
+#tools{position:fixed;top:0;right:0;z-index:40;display:flex}
+#lang{margin-right:-10px}
+#lang span{opacity:.6}
+#lang span.on{opacity:1;color:var(--red)}
+#lang,#snd{border:0;cursor:pointer;background:var(--ink);color:var(--paper);
+  padding:calc(env(safe-area-inset-top,0px) + 8px) 16px 8px 26px;font-family:var(--display);font-size:1.05rem;letter-spacing:.05em;text-transform:uppercase;
+  clip-path:polygon(12% 0,100% 0,100% 100%,0 100%)}
+#snd b{color:var(--red);font-weight:400}
+#snd[aria-pressed="false"] b{color:#888}
+#snd:hover,#snd:focus-visible,#lang:hover,#lang:focus-visible{background:var(--paper);color:var(--ink);outline:none}
+
+/* ---------- pemutar musik ---------- */
+#music{position:fixed;left:0;bottom:0;z-index:40;display:flex;align-items:flex-end;max-width:100%;padding:0 0 env(safe-area-inset-bottom,0px)}
+#m-toggle{flex:none;width:58px;height:58px;border:0;cursor:pointer;background:var(--red);color:var(--paper);font-size:1.7rem;line-height:1;
+  clip-path:polygon(0 0,100% 0,82% 100%,0 100%);padding-right:10px}
+#m-toggle:hover,#m-toggle:focus-visible{background:var(--paper);color:var(--red);outline:none}
+.mbar{background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:8px 34px 8px 16px;margin-left:-12px;
+  clip-path:polygon(0 0,100% 0,95% 100%,0 100%);width:min(470px,calc(100vw - 46px))}
+#music.min .mbar{display:none}
+.mmain{flex:1 1 180px;min-width:0}
+.mtitle{font-family:var(--display);font-size:1.25rem;line-height:1.1;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mtitle small{font-family:var(--marker);color:var(--red);font-size:.95rem;margin-right:6px;text-transform:none}
+.mprog{height:8px;background:#444;margin-top:6px;cursor:pointer;transform:skewX(-18deg)}
+.mprog i{display:block;height:100%;width:0;background:var(--red)}
+.mnote{font-size:.95rem;color:#ddd;min-height:1.1em;margin-top:2px}
+.mctl{display:flex;gap:6px;flex:none}
+.mctl button{border:0;cursor:pointer;background:var(--paper);color:var(--ink);font-family:var(--display);font-size:1.05rem;padding:6px 12px;transform:skewX(-10deg)}
+.mctl button:hover,.mctl button:focus-visible{background:var(--red);color:var(--paper);outline:none}
+.mchips{display:flex;gap:6px;flex:none}
+.mchips button{width:34px;height:34px;border:2px solid var(--paper);background:none;color:var(--paper);cursor:pointer;font-family:var(--display);font-size:1.05rem;transform:skewX(-10deg)}
+.mchips button.on{background:var(--red);border-color:var(--red)}
+.mchips button.empty{opacity:.55}
+.mchips button:hover,.mchips button:focus-visible{outline:none;background:var(--paper);color:var(--ink)}
+
+/* ---------- responsif ---------- */
+@media (max-width:820px){
+  .home{grid-template-columns:1fr;gap:6px}
+  .stage{width:min(72%,300px)}
+  .menu{max-width:none}
+  .about,.contact{grid-template-columns:1fr}
+  .about .stage{display:none}
+  .proj{grid-template-columns:1fr;gap:22px}
+  .plist{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;padding-right:12px}
+  .plist .mw{margin:0}
+  .plist .mw:nth-child(n){transform:rotate(-1deg)}
+  .plist .menu-btn{font-size:1.25rem;padding:9px 12px 9px 30px}
+  .plist .menu-btn .mk{left:8px;border-left-width:14px;border-top-width:9px;border-bottom-width:9px}
+  .box{padding:18px 18px}
+  .sk{grid-template-columns:1fr auto;gap:6px 10px}
+  .sk-n{grid-column:1/-1}
+  .dhead{gap:12px}
+  .ico{width:64px;height:64px}.ico svg{width:40px;height:40px}
+  .box h3{font-size:1.9rem}
+  .links{padding-right:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-delay:0s !important;transition-duration:.01ms !important}
+  .press{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- karakter (dibuat sendiri: pencuri hantu bertopeng, terinspirasi gaya poster Persona 5) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="char" viewBox="0 0 400 500">
+    <path d="M30 500 C8 400 18 300 68 205 C92 268 102 322 124 362 Z" fill="#8f000b" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M370 500 C392 400 382 300 332 205 C308 268 298 322 276 362 Z" fill="#8f000b" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M178 255 L178 315 L200 352 L222 315 L222 255 Z" fill="#d9c3b6" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M48 500 L68 378 C86 336 140 314 168 302 L200 352 L232 302 C260 314 314 336 332 378 L352 500 Z" fill="#000" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M168 302 L200 352 L186 500 L146 500 L118 384 Z" fill="#e60012" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M232 302 L200 352 L214 500 L254 500 L282 384 Z" fill="#e60012" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M172 306 L200 348 L228 306 L214 384 L200 500 L186 384 Z" fill="#fff" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M193 352 L207 352 L213 404 L200 436 L187 404 Z" fill="#e60012" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M140 172 C140 122 168 96 200 96 C232 96 260 122 260 172 L256 214 C250 246 226 272 200 278 C174 272 150 246 144 214 Z" fill="#f3e3d8" stroke="#000" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M200 278 C226 272 250 246 256 214 L232 234 C224 250 214 258 200 262 Z" fill="#000" opacity=".22"/>
+    <path d="M126 202 C110 140 130 70 200 55 C270 70 290 140 274 202 C270 172 258 150 242 140 L236 162 L218 130 L200 164 L182 130 L164 162 L158 140 C142 150 130 172 126 202 Z" fill="#000"/>
+    <path d="M140 102 L108 50 L170 86 Z M260 102 L292 50 L230 86 Z M200 64 L186 16 L224 60 Z M116 150 L84 118 L134 128 Z M284 150 L316 118 L266 128 Z" fill="#000"/>
+    <path d="M146 174 L176 160 L200 172 L224 160 L254 174 L246 204 L222 208 L200 194 L178 208 L154 204 Z" fill="#fff" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M164 180 L190 184 L183 196 L160 190 Z M236 180 L210 184 L217 196 L240 190 Z" fill="#000"/>
+    <path d="M170 183 L184 186 M230 183 L216 186" stroke="#e60012" stroke-width="3" stroke-linecap="round"/>
+    <path d="M200 208 L195 226 L206 226" fill="none" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M180 244 Q204 258 228 236" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round"/>
+    <path d="M222 240 L226 250 L216 246" fill="#fff" stroke="#000" stroke-width="2.5" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div id="app">
+
+  <!-- BERANDA -->
+  <section class="view active" id="view-home" aria-label="Beranda">
+    <div class="home">
+      <div class="stage" aria-hidden="true">
+        <svg class="burst" viewBox="-100 -100 200 200"><polygon id="burstB" fill="#000"/><polygon id="burstW" fill="#fff"/></svg>
+        <svg class="figure" viewBox="0 0 400 500"><use href="#char"/></svg>
+      </div>
+      <div class="titleblock">
+        <span class="tag" data-i18n="tag">Portofolio</span>
+        <h1 class="ransom" data-ransom="Azka Zakiyyan">Azka Zakiyyan</h1>
+        <ul class="menu">
+          <li class="mw"><button class="menu-btn" data-go="about"><span class="mk"></span><span data-i18n="m_about">Profil</span><small data-i18n="m_about_s">siapa saya</small></button></li>
+          <li class="mw"><button class="menu-btn" data-go="projects"><span class="mk"></span><span data-i18n="m_proj">Projek</span><small data-i18n="m_proj_s">karya saya</small></button></li>
+          <li class="mw"><button class="menu-btn" data-go="contact"><span class="mk"></span><span data-i18n="m_contact">Kontak</span><small data-i18n="m_contact_s">ayo ngobrol</small></button></li>
+        </ul>
+        <p class="hint" data-i18n="hint">Gunakan tombol panah atas/bawah dan Enter, atau sentuh menunya.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFIL -->
+  <section class="view" id="view-about" aria-label="Profil">
+    <div class="wrap">
+      <button class="back" data-go="home"><b>◀</b><span data-i18n="back">Kembali</span></button>
+      <div class="head"><h2 class="ransom" data-ransom="Profil" data-i18n-r="h_about">Profil</h2></div>
+      <div class="about">
+        <div class="stage" aria-hidden="true">
+          <svg class="burst" viewBox="-100 -100 200 200"><polygon class="bB" fill="#000"/><polygon class="bW" fill="#fff"/></svg>
+          <svg class="figure" viewBox="0 0 400 500"><use href="#char"/></svg>
+        </div>
+        <div class="box">
+          <span class="marker" data-i18n="hello">Halo, saya</span>
+          <h3>Azka Zakiyyan</h3>
+          <p data-i18n="bio">Saya suka membuat hal-hal digital dari nol: aplikasi Android, game, model 3D, website, sampai desain antarmuka. Setiap proyek saya kerjakan dengan satu tujuan, yaitu hasilnya enak dipakai dan enak dilihat.</p>
+          <ul class="chips">
+            <li>Android Studio</li><li>Blender</li><li>Godot</li><li>Unity</li><li>Roblox Studio</li><li>Web</li><li>Figma</li>
+          </ul>
+          <dl class="fact">
+            <dt data-i18n="f_focus">Fokus</dt><dd data-i18n="f_focus_v">Aplikasi, game, 3D, dan UI/UX</dd>
+            <dt data-i18n="f_tools">Alat</dt><dd>Android Studio, Blender, Godot, Unity, Roblox Studio, Figma</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="box skills">
+        <span class="marker" data-i18n="sk_marker">Status kemampuan</span>
+        <h3 data-i18n="sk_title">Skill</h3>
+        <div id="skills"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJEK -->
+  <section class="view" id="view-projects" aria-label="Projek">
+    <div class="wrap">
+      <button class="back" data-go="home"><b>◀</b><span data-i18n="back">Kembali</span></button>
+      <div class="head"><h2 class="ransom" data-ransom="Projek" data-i18n-r="h_proj">Projek</h2></div>
+      <div class="proj">
+        <ul class="plist" id="plist"></ul>
+        <article class="box detail" id="detail" aria-live="polite"></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAK -->
+  <section class="view" id="view-contact" aria-label="Kontak">
+    <div class="wrap">
+      <button class="back" data-go="home"><b>◀</b><span data-i18n="back">Kembali</span></button>
+      <div class="head"><h2 class="ransom" data-ransom="Kontak" data-i18n-r="h_contact">Kontak</h2></div>
+      <div class="contact">
+        <form class="box form" id="form" novalidate>
+          <span class="marker" data-i18n="c_marker">Kirim pesan lewat email</span>
+          <label for="f-name" data-i18n="c_name">Nama kamu</label>
+          <input id="f-name" name="name" autocomplete="name" placeholder="Nama lengkap" data-i18n-ph="c_name_ph">
+          <label for="f-subject" data-i18n="c_subj">Subjek</label>
+          <input id="f-subject" name="subject" placeholder="Contoh: Kerja sama proyek" data-i18n-ph="c_subj_ph">
+          <label for="f-msg" data-i18n="c_msg">Pesan</label>
+          <textarea id="f-msg" name="msg" placeholder="Tulis pesanmu di sini" data-i18n-ph="c_msg_ph"></textarea>
+          <button type="submit" class="send" data-i18n="c_send">Kirim email</button>
+          <button type="button" class="copy" id="copy" data-i18n="c_copy">Salin alamat email</button>
+          <p class="status" id="status" role="status"></p>
+        </form>
+        <ul class="links" id="links"></ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="music" class="min">
+  <button id="m-toggle" aria-expanded="false" aria-controls="m-panel" aria-label="Buka pemutar musik">♪</button>
+  <div class="mbar" id="m-panel">
+    <div class="mmain">
+      <div class="mtitle" id="m-title"></div>
+      <div class="mprog" id="m-prog" role="presentation"><i id="m-fill"></i></div>
+      <div class="mnote" id="m-note" role="status"></div>
+    </div>
+    <div class="mctl">
+      <button id="m-prev" aria-label="Lagu sebelumnya" data-i18n-aria="m_prev">|◀</button>
+      <button id="m-play" aria-label="Putar">▶</button>
+      <button id="m-next" aria-label="Lagu berikutnya" data-i18n-aria="m_next">▶|</button>
+    </div>
+    <div class="mchips" id="m-chips"></div>
+  </div>
+</div>
+
+<div id="tools">
+  <button id="lang" aria-label="Ganti bahasa ke English"><span id="lang-id" class="on">ID</span> / <span id="lang-en">EN</span></button>
+  <button id="snd" aria-pressed="true" aria-label="Efek suara" data-i18n-aria="snd_aria"><span data-i18n="snd">Suara</span> <b id="snd-s">ON</b></button>
+</div>
+
+<div id="gal" role="dialog" aria-modal="true" aria-labelledby="g-title" aria-hidden="true">
+  <div class="gpanel">
+    <div class="ghead">
+      <div><h3 id="g-title"></h3><p id="g-note"></p></div>
+      <button class="gclose" id="g-close"><b>✕</b> <span data-i18n="g_close">Tutup</span></button>
+    </div>
+    <div class="gmain" id="g-main">
+      <span class="gcount" id="g-count"></span>
+      <button class="gnav prev" id="g-prev" aria-label="Gambar sebelumnya" data-i18n-aria="g_prev">◀</button>
+      <button class="gnav next" id="g-next" aria-label="Gambar berikutnya" data-i18n-aria="g_next">▶</button>
+      <div id="g-stage" style="width:100%;height:100%"></div>
+    </div>
+    <div class="gcap" id="g-cap"></div>
+    <div class="thumbs" id="g-thumbs"></div>
+  </div>
+</div>
+
+<div id="wipe" aria-hidden="true"><div></div><div></div><div><span class="label" id="wlabel"></span></div></div>
+
+<div id="splash" role="button" tabindex="0" aria-label="Masuk ke portofolio" data-i18n-aria="splash_aria">
+  <div class="splash-in">
+    <h1 class="ransom" id="splash-name" data-ransom="Azka Zakiyyan" data-anim="1">Azka Zakiyyan</h1>
+    <span class="press" id="press" data-i18n="splash_press">Ketuk untuk masuk</span>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   PENGATURAN: ganti isi di bagian ini dengan datamu
+   ========================================================= */
+const EMAIL = "azkazt91@gmail.com";                 // ganti dengan email aslimu
+const SOCIALS = [                                  // ganti tautan sesuai akunmu
+  { name:"Email",     sub:EMAIL,        href:"mailto:"+EMAIL },
+  { name:"Instagram", sub:"@zk_1980p",  href:"https://www.instagram.com/zk_1980p?stkn=MTlzaDV3a2NubWEwNA==" },
+  { name:"GitHub",    sub:"Azka3",   href:"https://github.com/Azka3" },
+  { name:"Facebook",  sub:"Moi zk", href:"https://www.facebook.com/share/1LjmYNYiFs/" }
+];
+// skill: level 1-10 (ubah angkanya kapan saja)
+const SKILLS = [
+  { name:"Blender",       lv:9 },
+  { name:"Roblox Studio", lv:8 },
+  { name:"Website",       lv:7 },
+  { name:"Game Engine",   lv:7 },
+  { name:"Android Studio",lv:6 }
+];
+// musik: 3 slot lagu (masih kosong). Isi "src" dengan alamat file audio-mu.
+// Contoh: src:"music/lagu1.mp3"  (jika halaman kamu hosting sendiri)
+//     atau src:"data:audio/mpeg;base64,...." (file ditanam langsung di halaman)
+const TRACKS = [
+  { title:"Beneath the Mask", artist:"Atlus", src:"music/Beneath the Mask_spotdown.org.mp3" },
+  { title:"Last Surprise",    artist:"Atlus", src:"music/Last Surprise.mp3" },
+  { title:"Life Will Change", artist:"Atlus", src:"music/Life Will Change.mp3" }
+];
+// tiap projek: teks dua bahasa ditulis {id:"...", en:"..."}; link boleh dikosongkan
+const PROJECTS = [
+  { id:"android", name:"Android Studio", sub:{id:"Aplikasi mobile", en:"Mobile apps"},
+    icon:'<path d="M12 42a20 20 0 0 1 40 0z"/><path d="M22 26l-6-10M42 26l6-10"/><circle cx="25" cy="35" r="1.5"/><circle cx="39" cy="35" r="1.5"/><path d="M14 50h36"/>',
+    desc:{id:"Aplikasi Android yang saya bangun dari nol, mulai dari rancangan layar sampai logika di belakangnya.", en:"Android apps I build from scratch, from screen layouts to the logic behind them."},
+    tags:["Kotlin","Java","Jetpack Compose","XML"],
+    items:[
+      { title:{id:"Gempa Detector", en:"Gempa Detector"},
+        note:{id:"Sebuah aplikasi untuk mendeteksi gempa.", en:"A app for detecting earthquakes."},
+        link:"",
+        gallery:[
+          { src:"media/android/gempa.jpg", caption:{id:"Gempa Detector", en:"Gempa Detector"} }
+        ] },
+    ] },
+
+  { id:"blender", name:"Blender", sub:{id:"Model & animasi 3D", en:"3D models & animation"},
+    icon:'<path d="M32 8l22 12v24L32 56 10 44V20z"/><path d="M10 20l22 12 22-12M32 32v24"/>',
+    desc:{id:"Model 3D, tekstur, dan animasi pendek. Dari sketsa awal sampai hasil render akhir.", en:"3D models, textures, and short animations, from the first sketch to the final render."},
+    tags:["Modeling","Texturing",{id:"Animasi",en:"Animation"},"Render"],
+    items:[
+      { title:{id:"Shimonada Stasiun", en:"Shimonada Station"},
+        note:{id:"Stasiun Shimonada yang berada di Jepang.", en:"Shimonada Station is located in Japan."},
+        link:"",
+        gallery:[
+          { src:"media/blender/shimonada station.jpg", caption:{id:"Stasiun Shimonada", en:"Shimonada Station"} },
+          { src:"media/blender/train.jpg",  caption:{id:"Stasiun", en:"Station"} },
+          { src:"media/blender/train1.jpg", caption:{id:"Stasiun, sudut 2", en:"Station, angle 2"} },
+          { src:"media/blender/train2.jpg", caption:{id:"Stasiun, sudut 3", en:"Station, angle 3"} },
+          { src:"media/blender/train3.jpg", caption:{id:"Stasiun, sudut 4", en:"Station, angle 4"} }
+        ] },
+      { title:{id:"Radio", en:"Radio"},
+        note:{id:"Radio dengan style low polly.", en:"Radio with a low-poly style."},
+        link:"",
+        gallery:[
+          { src:"media/blender/radio.jpg", caption:{id:"Radio", en:"Radio"} }
+        ] },
+        { title:{id:"Mansion", en:"Mansion"},
+          note:{id:"Mansion low polly dengan langit cerah", en:"Mansion with a low-poly style and clear sky."},
+          link:"",
+          gallery:[
+          { src:"media/blender/mansion.jpg", caption:{id:"Mansion", en:"Mansion"} }
+        ] },
+    ] },
+
+  { id:"engine", name:"Game Engine", sub:"Godot & Unity",
+    icon:'<rect x="6" y="18" width="52" height="30" rx="14"/><path d="M20 27v12M14 33h12"/><circle cx="42" cy="29" r="2.5"/><circle cx="48" cy="37" r="2.5"/>',
+    desc:{id:"Game yang dibuat dengan Godot dan Unity: mekanik permainan, level, sampai tampilan menunya.", en:"Games made with Godot and Unity: gameplay mechanics, levels, and menu screens."},
+    tags:["Godot","Unity","GDScript","C#"],
+    items:[
+      { title:{id:"Judul game Godot", en:"Godot game title"},
+        note:{id:"Tulis genre dan mekanik utama gamenya.", en:"Write the game's genre and main mechanics."},
+        link:"" },
+      { title:{id:"Judul game Unity", en:"Unity game title"},
+        note:{id:"Tulis genre dan mekanik utama gamenya.", en:"Write the game's genre and main mechanics."},
+        link:"" }
+    ] },
+
+  { id:"roblox", name:"Roblox Studio", sub:{id:"Game di Roblox", en:"Roblox games"},
+    icon:'<rect x="14" y="14" width="36" height="36" transform="rotate(15 32 32)"/><rect x="26" y="26" width="12" height="12" transform="rotate(15 32 32)"/>',
+    desc:{id:"Dunia dan game di Roblox Studio, lengkap dengan skrip Luau dan pembangunan peta.", en:"Worlds and games in Roblox Studio, with Luau scripting and map building."},
+    tags:["Luau","Scripting","Map building","Game design"],
+    items:[
+      { title:{id:"Recursive", en:"Recursive"},
+        note:{id:"Game horor semakin jauh semakin besar ruangan nya.", en:"Horror game with expanding rooms."},
+        link:"",
+        gallery:[
+          { src:"media/roblok/r1.jpeg", caption:{id:"Recursive", en:"Recursive"} },
+          { src:"media/roblok/r2.jpeg", caption:{id:"Recursive", en:"Recursive"} }
+        ] },
+    ] },
+
+  { id:"web", name:"Website", sub:{id:"Situs & aplikasi web", en:"Websites & web apps"},
+    icon:'<rect x="6" y="10" width="52" height="44" rx="3"/><path d="M6 22h52"/><path d="M14 33h20M14 41h32"/><circle cx="13" cy="16" r="1.4"/><circle cx="19" cy="16" r="1.4"/>',
+    desc:{id:"Website yang rapi, cepat, dan nyaman dibuka di layar apa pun.", en:"Clean, fast websites that feel good on any screen."},
+    tags:["HTML","CSS","JavaScript",{id:"Responsif",en:"Responsive"}],
+    items:[
+      { title:{id:"Judul website 1", en:"Website title 1"},
+        note:{id:"Tulis untuk siapa website ini dan apa fungsinya.", en:"Write who the website is for and what it does."},
+        link:"" },
+      { title:{id:"Judul website 2", en:"Website title 2"},
+        note:{id:"Tulis untuk siapa website ini dan apa fungsinya.", en:"Write who the website is for and what it does."},
+        link:"" }
+    ] },
+
+  { id:"figma", name:"UI/UX Figma", sub:{id:"Desain antarmuka", en:"Interface design"},
+    icon:'<rect x="20" y="6" width="12" height="17" rx="6"/><rect x="32" y="6" width="12" height="17" rx="6"/><rect x="20" y="23" width="12" height="17" rx="6"/><circle cx="38" cy="31.5" r="8.5"/><rect x="20" y="40" width="12" height="17" rx="6"/>',
+    desc:{id:"Desain aplikasi dan website di Figma: alur pengguna, wireframe, sampai prototipe yang bisa dicoba.", en:"App and website designs in Figma: user flows, wireframes, and clickable prototypes."},
+    tags:["Wireframe",{id:"Prototipe",en:"Prototype"},"Design system","User flow"],
+    items:[
+      { title:{id:"Judul desain UI 1", en:"UI design title 1"},
+        note:{id:"Tulis aplikasi atau situs yang kamu desain.", en:"Write which app or site you designed."},
+        link:"" },
+      { title:{id:"Judul desain UI 2", en:"UI design title 2"},
+        note:{id:"Tulis aplikasi atau situs yang kamu desain.", en:"Write which app or site you designed."},
+        link:"" }
+    ] }
+];
+
+// teks antarmuka dua bahasa
+const I18N = {
+  id:{
+    title:"Azka Zakiyyan | Portofolio", splash_press:"Ketuk untuk masuk", splash_aria:"Masuk ke portofolio", tag:"Portofolio",
+    m_about:"Profil", m_about_s:"siapa saya", m_proj:"Projek", m_proj_s:"karya saya", m_contact:"Kontak", m_contact_s:"ayo ngobrol",
+    hint:"Gunakan tombol panah atas/bawah dan Enter, atau sentuh menunya.", back:"Kembali",
+    h_about:"Profil", h_proj:"Projek", h_contact:"Kontak",
+    hello:"Halo, saya", bio:"Saya suka membuat hal-hal digital dari nol: aplikasi Android, game, model 3D, website, sampai desain antarmuka. Setiap proyek saya kerjakan dengan satu tujuan, yaitu hasilnya enak dipakai dan enak dilihat.",
+    f_focus:"Fokus", f_focus_v:"Aplikasi, game, 3D, dan UI/UX", f_tools:"Alat",
+    sk_marker:"Status kemampuan", sk_title:"Skill", sk_aria:"{n} level {lv} dari 10",
+    r_expert:"Ahli", r_adv:"Mahir", r_mid:"Menengah", r_beg:"Pemula",
+    go:"Lihat galeri ▶ ({n} gambar)", open_proj:"Buka projek",
+    c_marker:"Kirim pesan lewat email", c_name:"Nama kamu", c_name_ph:"Nama lengkap", c_subj:"Subjek", c_subj_ph:"Contoh: Kerja sama proyek",
+    c_msg:"Pesan", c_msg_ph:"Tulis pesanmu di sini", c_send:"Kirim email", c_copy:"Salin alamat email",
+    c_err:"Tulis pesanmu dulu sebelum mengirim.", c_open:"Membuka aplikasi email kamu…", c_copied:"Alamat email tersalin: ", c_manual:"Salin manual: ",
+    c_subj_def:"Pesan dari portofolio", c_regards:"Salam,",
+    snd:"Suara", snd_aria:"Efek suara", lang_aria:"Ganti bahasa ke English",
+    g_close:"Tutup", g_prev:"Gambar sebelumnya", g_next:"Gambar berikutnya", g_img:"Gambar",
+    m_prev:"Lagu sebelumnya", m_next:"Lagu berikutnya", m_play:"Putar", m_pause:"Jeda", m_open:"Buka pemutar musik", m_close:"Tutup pemutar musik",
+    m_slot:"Slot {n} kosong", m_song:"Lagu", m_none:"Belum ada lagu di slot ini.", m_emptyplay:"Slot ini masih kosong. Isi src-nya di TRACKS.",
+    m_fail:"Lagu tidak bisa diputar.", m_load:"File lagu gagal dimuat. Cek alamat src-nya.", m_chip:"Pilih slot lagu"
+  },
+  en:{
+    title:"Azka Zakiyyan | Portfolio", splash_press:"Tap to enter", splash_aria:"Enter the portfolio", tag:"Portfolio",
+    m_about:"Profile", m_about_s:"who I am", m_proj:"Projects", m_proj_s:"my work", m_contact:"Contact", m_contact_s:"let's talk",
+    hint:"Use the up/down arrow keys and Enter, or tap a menu item.", back:"Back",
+    h_about:"Profile", h_proj:"Projects", h_contact:"Contact",
+    hello:"Hi, I'm", bio:"I like building digital things from scratch: Android apps, games, 3D models, websites, and interface designs. Every project has one goal: it should feel good to use and look good too.",
+    f_focus:"Focus", f_focus_v:"Apps, games, 3D, and UI/UX", f_tools:"Tools",
+    sk_marker:"Skill status", sk_title:"Skills", sk_aria:"{n} level {lv} out of 10",
+    r_expert:"Expert", r_adv:"Advanced", r_mid:"Intermediate", r_beg:"Beginner",
+    go:"View gallery ▶ ({n} images)", open_proj:"Open project",
+    c_marker:"Send a message by email", c_name:"Your name", c_name_ph:"Full name", c_subj:"Subject", c_subj_ph:"Example: Project collaboration",
+    c_msg:"Message", c_msg_ph:"Write your message here", c_send:"Send email", c_copy:"Copy email address",
+    c_err:"Please write your message first.", c_open:"Opening your email app…", c_copied:"Email address copied: ", c_manual:"Copy manually: ",
+    c_subj_def:"Message from your portfolio", c_regards:"Regards,",
+    snd:"Sound", snd_aria:"Sound effects", lang_aria:"Switch language to Indonesian",
+    g_close:"Close", g_prev:"Previous image", g_next:"Next image", g_img:"Image",
+    m_prev:"Previous song", m_next:"Next song", m_play:"Play", m_pause:"Pause", m_open:"Open music player", m_close:"Close music player",
+    m_slot:"Slot {n} is empty", m_song:"Song", m_none:"No song in this slot yet.", m_emptyplay:"This slot is empty. Fill in its src in TRACKS.",
+    m_fail:"The song can't be played.", m_load:"The song file failed to load. Check its src path.", m_chip:"Select song slot"
+  }
+};
+
+/* =========================================================
+   Kode
+   ========================================================= */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = t => String(t).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* bahasa */
+let lang = 'id';
+try { const sv = localStorage.getItem('azka-lang'); if (sv === 'en' || sv === 'id') lang = sv; } catch {}
+const T = k => (I18N[lang] && I18N[lang][k] != null) ? I18N[lang][k] : (I18N.id[k] != null ? I18N.id[k] : k);
+const L = v => (v && typeof v === 'object') ? (v[lang] != null ? v[lang] : (v.id != null ? v.id : '')) : (v == null ? '' : v);
+
+/* huruf ransom-note */
+function ransom(el){
+  const text = el.dataset.ransom || el.textContent;
+  const anim = el.dataset.anim;
+  el.setAttribute('aria-label', text);
+  el.textContent = '';
+  let n = 0;
+  text.split(' ').forEach((word, wi) => {
+    const w = document.createElement('span'); w.className = 'rw'; w.setAttribute('aria-hidden','true');
+    [...word].forEach(ch => {
+      const i = n++;
+      const s = document.createElement('span');
+      const font = (i % 5 === 2) ? ' f-m' : (i % 7 === 4 ? ' f-s' : '');
+      s.className = 'rl v' + ((i * 3 + wi) % 5) + font;
+      s.textContent = ch;
+      const rot = ((i * 37) % 11) - 5, up = ((i * 53) % 9) - 4, sc = 0.86 + ((i * 29) % 10) / 24;
+      s.style.fontSize = sc.toFixed(2) + 'em';
+      s.style.transform = `rotate(${rot}deg) translateY(${up}px)`;
+      if (anim){ s.style.animationDelay = (i * 70) + 'ms'; }
+      w.appendChild(s);
+    });
+    el.appendChild(w);
+  });
+}
+$$('[data-ransom]').forEach(ransom);
+
+/* bintang latar karakter */
+function star(cx, cy, r1, r2, n){
+  const p = [];
+  for (let i = 0; i < n * 2; i++){
+    const r = (i % 2 ? r1 : r2) * (i % 4 === 0 ? 1 : (i % 4 === 2 ? .88 : 1));
+    const a = (Math.PI * i) / n - Math.PI / 2;
+    p.push((cx + Math.cos(a) * r).toFixed(1) + ',' + (cy + Math.sin(a) * r).toFixed(1));
+  }
+  return p.join(' ');
+}
+$$('.burst').forEach(svg => {
+  const b = $('polygon:nth-child(1)', svg), w = $('polygon:nth-child(2)', svg);
+  b.setAttribute('points', star(6, 6, 62, 96, 14));
+  w.setAttribute('points', star(0, 0, 60, 94, 14));
+});
+
+/* skill */
+const rank = n => n >= 9 ? T('r_expert') : n >= 7 ? T('r_adv') : n >= 4 ? T('r_mid') : T('r_beg');
+function renderSkills(){
+  $('#skills').innerHTML = SKILLS.map((s, r) =>
+    `<div class="sk" style="--r:${r}"><span class="sk-n">${esc(s.name)}</span>` +
+    `<div class="cells" role="img" aria-label="${esc(T('sk_aria').replace('{n}', s.name).replace('{lv}', s.lv))}">` +
+    Array.from({length:10}, (_, k) => `<i class="${k < s.lv ? 'f' : ''}" style="--k:${k}"></i>`).join('') +
+    `</div><span class="sk-l"><b>Lv. ${s.lv}</b>${rank(s.lv)}</span></div>`).join('');
+}
+renderSkills();
+
+/* daftar projek */
+const plist = $('#plist'), detail = $('#detail');
+let curP = 0;
+function renderPlist(){
+  plist.innerHTML = PROJECTS.map((p, i) =>
+    `<li class="mw"><button class="menu-btn" data-p="${i}"><span class="mk"></span>${esc(p.name)}<small>${esc(L(p.sub))}</small></button></li>`).join('');
+  $$('#plist .menu-btn').forEach((b, k) => b.classList.toggle('on', k === curP));
+}
+renderPlist();
+
+function showProject(i, animate=true){
+  const p = PROJECTS[i]; curP = i;
+  $$('#plist .menu-btn').forEach((b, k) => b.classList.toggle('on', k === i));
+  detail.innerHTML = `
+    <div class="dhead">
+      <div class="ico" aria-hidden="true"><svg viewBox="0 0 64 64">${p.icon}</svg></div>
+      <div><h3>${esc(p.name)}</h3><span class="marker">${esc(L(p.sub))}</span></div>
+    </div>
+    <p>${esc(L(p.desc))}</p>
+    <ul class="chips">${p.tags.map(tg => `<li>${esc(L(tg))}</li>`).join('')}</ul>
+    <ul class="items">${p.items.map((it, n) => `<li><button class="item-btn" data-pi="${i}" data-ii="${n}"><strong>${esc(L(it.title))}</strong><span>${esc(L(it.note))}</span><span class="go">${esc(T('go').replace('{n}', galleryOf(it).length))}</span></button>${it.link ? `<a href="${esc(it.link)}" target="_blank" rel="noopener">${esc(T('open_proj'))}</a>` : ''}</li>`).join('')}</ul>`;
+  if (animate && !reduce){
+    detail.classList.remove('swap'); void detail.offsetWidth; detail.classList.add('swap');
+  }
+}
+plist.addEventListener('click', e => {
+  const b = e.target.closest('[data-p]'); if (!b) return;
+  showProject(+b.dataset.p);
+  if (matchMedia('(max-width:820px)').matches) detail.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+});
+showProject(0, false);
+
+/* galeri */
+function galleryOf(it){
+  return (it.gallery && it.gallery.length) ? it.gallery
+    : [1,2,3,4].map(n => ({ src:"", caption:{ id:"Keterangan gambar " + n + ": ganti dengan penjelasan karyamu.", en:"Image caption " + n + ": replace with a description of your work." } }));
+}
+const gal = $('#gal'), gStage = $('#g-stage'), gThumbs = $('#g-thumbs');
+let gList = [], gIdx = 0, gIcon = '', gOpener = null, galOpen = false;
+
+function slideHTML(g, n, icon){
+  if (g.src) return `<img src="${esc(g.src)}" alt="${esc(L(g.caption))}">`;
+  return `<div class="ph p${n % 4}"><svg viewBox="0 0 64 64">${icon}</svg><span>Placeholder ${n + 1}</span></div>`;
+}
+function showImg(i){
+  gIdx = (i + gList.length) % gList.length;
+  const g = gList[gIdx];
+  gStage.innerHTML = slideHTML(g, gIdx, gIcon);
+  $('#g-count').textContent = (gIdx + 1) + ' / ' + gList.length;
+  $('#g-cap').textContent = L(g.caption);
+  $$('.th', gThumbs).forEach((t, k) => { t.classList.toggle('on', k === gIdx); t.setAttribute('aria-current', k === gIdx ? 'true' : 'false'); });
+  const multi = gList.length > 1;
+  $('#g-prev').style.display = $('#g-next').style.display = multi ? '' : 'none';
+}
+function openGallery(pi, ii, opener){
+  const p = PROJECTS[pi], it = p.items[ii];
+  gList = galleryOf(it); gIcon = p.icon; gOpener = opener;
+  $('#g-title').textContent = L(it.title);
+  $('#g-note').textContent = L(it.note);
+  gThumbs.innerHTML = gList.map((g, k) =>
+    `<button class="th" data-k="${k}" aria-label="${esc(T('g_img'))} ${k + 1}">${slideHTML(g, k, gIcon)}</button>`).join('');
+  galOpen = true;
+  gal.classList.add('open'); gal.setAttribute('aria-hidden', 'false'); gal.scrollTop = 0;
+  $('#app').inert = true; $('#tools').inert = true;
+  showImg(0);
+  $('#g-close').focus();
+}
+function closeGallery(){
+  if (!galOpen) return;
+  galOpen = false;
+  gal.classList.remove('open'); gal.setAttribute('aria-hidden', 'true');
+  $('#app').inert = false; $('#tools').inert = false;
+  if (gOpener && document.contains(gOpener)) gOpener.focus({preventScroll:true});
+}
+detail.addEventListener('click', e => {
+  const b = e.target.closest('.item-btn'); if (!b) return;
+  sfx.swoosh();
+  openGallery(+b.dataset.pi, +b.dataset.ii, b);
+});
+$('#g-close').addEventListener('click', () => { sfx.back(); closeGallery(); });
+$('#g-prev').addEventListener('click', () => { sfx.tick(); showImg(gIdx - 1); });
+$('#g-next').addEventListener('click', () => { sfx.tick(); showImg(gIdx + 1); });
+gThumbs.addEventListener('click', e => { const t = e.target.closest('.th'); if (t){ sfx.tick(); showImg(+t.dataset.k); } });
+gal.addEventListener('click', e => { if (e.target === gal){ sfx.back(); closeGallery(); } });
+let tx = null;
+$('#g-main').addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+$('#g-main').addEventListener('touchend', e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 50){ sfx.tick(); showImg(gIdx + (dx < 0 ? 1 : -1)); }
+}, {passive:true});
+
+/* kontak */
+function renderLinks(){
+  $('#links').innerHTML = SOCIALS.map(s =>
+    `<li class="mw"><a class="menu-btn" href="${esc(s.href)}" ${s.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}><span class="mk"></span>${esc(s.name)}<small>${esc(L(s.sub))}</small></a></li>`).join('');
+}
+renderLinks();
+
+const status = $('#status');
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#f-name').value.trim(), subj = $('#f-subject').value.trim(), msg = $('#f-msg').value.trim();
+  if (!msg){ status.textContent = T('c_err'); $('#f-msg').focus(); return; }
+  const subject = subj || T('c_subj_def');
+  const body = msg + (name ? '\n\n' + T('c_regards') + '\n' + name : '');
+  status.textContent = T('c_open');
+  location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+});
+$('#copy').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(EMAIL); status.textContent = T('c_copied') + EMAIL; }
+  catch { status.textContent = T('c_manual') + EMAIL; }
+});
+
+/* efek suara (dibuat langsung di browser, tanpa file audio) */
+let ac = null, muted = false;
+try { muted = localStorage.getItem('azka-mute') === '1'; } catch {}
+function audio(){
+  if (!ac){ const C = window.AudioContext || window.webkitAudioContext; if (C) ac = new C(); }
+  if (ac && ac.state === 'suspended') ac.resume();
+  return ac;
+}
+function tone({f=440, f2=null, t=.08, type='square', v=.05, d=0}){
+  if (muted) return; const a = audio(); if (!a) return;
+  const o = a.createOscillator(), g = a.createGain(), s = a.currentTime + d;
+  o.type = type; o.frequency.setValueAtTime(f, s);
+  if (f2) o.frequency.exponentialRampToValueAtTime(f2, s + t);
+  g.gain.setValueAtTime(v, s); g.gain.exponentialRampToValueAtTime(.0001, s + t);
+  o.connect(g).connect(a.destination); o.start(s); o.stop(s + t + .03);
+}
+function noise({t=.4, v=.08, f1=400, f2=4000, d=0}){
+  if (muted) return; const a = audio(); if (!a) return;
+  const len = Math.floor(a.sampleRate * t), buf = a.createBuffer(1, len, a.sampleRate), ch = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) ch[i] = Math.random() * 2 - 1;
+  const src = a.createBufferSource(), bp = a.createBiquadFilter(), g = a.createGain(), s = a.currentTime + d;
+  src.buffer = buf; bp.type = 'bandpass'; bp.Q.value = 1.2;
+  bp.frequency.setValueAtTime(f1, s); bp.frequency.exponentialRampToValueAtTime(f2, s + t);
+  g.gain.setValueAtTime(.0001, s); g.gain.exponentialRampToValueAtTime(v, s + t * .35); g.gain.exponentialRampToValueAtTime(.0001, s + t);
+  src.connect(bp).connect(g).connect(a.destination); src.start(s);
+}
+const sfx = {
+  tick:   () => tone({f:900, f2:1400, t:.05, v:.03}),
+  ok:     () => { tone({f:520, t:.07, v:.05}); tone({f:780, t:.14, v:.05, d:.07}); },
+  back:   () => { tone({f:640, f2:320, t:.13, v:.05}); },
+  swoosh: () => { noise({t:.55, v:.16, f1:300, f2:5000}); tone({f:180, f2:900, t:.4, type:'sawtooth', v:.03}); },
+  hit:    () => { tone({f:120, f2:50, t:.45, type:'sawtooth', v:.12}); noise({t:.3, v:.12, f1:3000, f2:300});
+                  tone({f:660, t:.1, v:.05, d:.1}); tone({f:990, t:.2, v:.05, d:.18}); }
+};
+const sndBtn = $('#snd');
+function paintSnd(){ sndBtn.setAttribute('aria-pressed', String(!muted)); $('#snd-s').textContent = muted ? 'OFF' : 'ON'; }
+paintSnd();
+sndBtn.addEventListener('click', () => {
+  muted = !muted; paintSnd();
+  try { localStorage.setItem('azka-mute', muted ? '1' : '0'); } catch {}
+  if (!muted) sfx.ok();
+});
+document.addEventListener('pointerdown', audio, {once:true});
+const isMenu = el => el.closest && el.closest('.menu-btn, .back, .send, .copy, #snd, #lang');
+document.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && e.target.matches && e.target.matches('.menu-btn, .back') && !busy) sfx.tick(); }, true);
+document.addEventListener('focusin', e => { if (!busy && e.target.matches && e.target.matches(':focus-visible') && isMenu(e.target)) sfx.tick(); });
+document.addEventListener('click', e => {
+  const b = isMenu(e.target); if (!b || b.id === 'snd' || b.id === 'lang') return;
+  if (b.classList.contains('back')) sfx.back(); else sfx.ok();
+});
+
+/* pemutar musik */
+const au = new Audio(); au.preload = 'none';
+let ti = 0;
+const mTitle = $('#m-title'), mPlay = $('#m-play'), mFill = $('#m-fill'), mNote = $('#m-note'), mChips = $('#m-chips'), music = $('#music'), mToggle = $('#m-toggle');
+const hasSrc = i => !!(TRACKS[i] && TRACKS[i].src);
+function trackName(i){
+  const t = TRACKS[i];
+  if (!t.src) return T('m_slot').replace('{n}', i + 1);
+  return (t.title || T('m_song') + ' ' + (i + 1)) + (t.artist ? ' · ' + t.artist : '');
+}
+function paintMusic(){
+  mTitle.innerHTML = `<small>${ti + 1}/${TRACKS.length}</small>${esc(trackName(ti))}`;
+  mPlay.textContent = (!au.paused && hasSrc(ti)) ? '❚❚' : '▶';
+  mPlay.setAttribute('aria-label', (!au.paused && hasSrc(ti)) ? T('m_pause') : T('m_play'));
+  $$('button', mChips).forEach((b, k) => b.classList.toggle('on', k === ti));
+}
+function selectTrack(i, play){
+  ti = (i + TRACKS.length) % TRACKS.length;
+  au.pause(); mFill.style.width = '0'; mNote.textContent = '';
+  if (hasSrc(ti)){ au.src = TRACKS[ti].src; } else { au.removeAttribute('src'); au.load(); mNote.textContent = T('m_none'); }
+  paintMusic();
+  if (play && hasSrc(ti)) au.play().catch(() => { mNote.textContent = T('m_fail'); });
+}
+function renderChips(){
+  mChips.innerHTML = TRACKS.map((t, k) => `<button data-k="${k}" class="${t.src ? '' : 'empty'}" aria-label="${esc(T('m_chip'))} ${k + 1}">${k + 1}</button>`).join('');
+  $$('button', mChips).forEach((b, k) => b.classList.toggle('on', k === ti));
+}
+renderChips();
+mChips.addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (b){ sfx.tick(); selectTrack(+b.dataset.k, true); } });
+$('#m-prev').addEventListener('click', () => { sfx.tick(); selectTrack(ti - 1, true); });
+$('#m-next').addEventListener('click', () => { sfx.tick(); selectTrack(ti + 1, true); });
+mPlay.addEventListener('click', () => {
+  sfx.tick();
+  if (!hasSrc(ti)){ mNote.textContent = T('m_emptyplay'); return; }
+  if (!au.src || au.src === location.href) au.src = TRACKS[ti].src;
+  if (au.paused) au.play().catch(() => { mNote.textContent = T('m_fail'); }); else au.pause();
+});
+au.addEventListener('play', paintMusic);
+au.addEventListener('pause', paintMusic);
+au.addEventListener('error', () => { if (hasSrc(ti)) mNote.textContent = T('m_load'); });
+au.addEventListener('timeupdate', () => { if (au.duration) mFill.style.width = (au.currentTime / au.duration * 100) + '%'; });
+au.addEventListener('ended', () => {
+  for (let k = 1; k <= TRACKS.length; k++){ const n = (ti + k) % TRACKS.length; if (hasSrc(n)){ selectTrack(n, true); return; } }
+  paintMusic();
+});
+$('#m-prog').addEventListener('click', e => {
+  if (!hasSrc(ti) || !isFinite(au.duration)) return;
+  const r = e.currentTarget.getBoundingClientRect();
+  au.currentTime = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * au.duration;
+});
+function setMusicOpen(open){
+  music.classList.toggle('min', !open);
+  mToggle.setAttribute('aria-expanded', String(open));
+  mToggle.setAttribute('aria-label', open ? T('m_close') : T('m_open'));
+}
+mToggle.addEventListener('click', () => { sfx.tick(); setMusicOpen(music.classList.contains('min')); });
+setMusicOpen(!matchMedia('(max-width:600px)').matches);
+paintMusic();
+
+/* transisi antar halaman */
+const wipe = $('#wipe'), wlabel = $('#wlabel');
+const LABELS = () => ({ home:'Azka', about:T('h_about'), projects:T('h_proj'), contact:T('h_contact') });
+let current = 'home', busy = false;
+
+function swap(name){
+  $$('.view').forEach(v => { v.classList.remove('active','enter'); });
+  const v = $('#view-' + name);
+  v.classList.add('active'); v.scrollTop = 0;
+  void v.offsetWidth; v.classList.add('enter');
+  current = name;
+  const first = $('.menu-btn, .back', v);
+  if (first) first.focus({preventScroll:true});
+}
+function go(name){
+  if (busy || name === current) return;
+  run(LABELS()[name], () => swap(name));
+}
+function run(label, mid){
+  if (reduce){ mid(); return; }
+  busy = true;
+  sfx.swoosh();
+  wlabel.textContent = label;
+  wipe.style.display = 'block';
+  const panels = $$('#wipe > div');
+  const K = (a, b) => [{transform:`translateX(${a}) skewX(-18deg)`}, {transform:`translateX(${b}) skewX(-18deg)`}];
+  const opt = i => ({duration:400, delay:i * 80, easing:'cubic-bezier(.7,0,.25,1)', fill:'forwards'});
+  const cover = panels.map((p, i) => p.animate(K('-130%','0%'), opt(i)));
+  Promise.all(cover.map(a => a.finished)).then(() => {
+    mid();
+    setTimeout(() => {
+      const out = panels.map((p, i) => p.animate(K('0%','130%'), opt(i)));
+      Promise.all(out.map(a => a.finished)).then(() => {
+        [...cover, ...out].forEach(a => a.cancel());
+        wipe.style.display = 'none'; busy = false;
+      });
+    }, 220);
+  });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-go]'); if (b) go(b.dataset.go);
+});
+document.addEventListener('keydown', e => {
+  if (galOpen){
+    if (e.key === 'Escape'){ sfx.back(); closeGallery(); }
+    else if (e.key === 'ArrowRight'){ sfx.tick(); showImg(gIdx + 1); }
+    else if (e.key === 'ArrowLeft'){ sfx.tick(); showImg(gIdx - 1); }
+    return;
+  }
+  if (busy) return;
+  if (e.key === 'Escape' && current !== 'home'){ go('home'); return; }
+  if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)){
+    const items = $$('.menu-btn', $('#view-' + current));
+    if (!items.length) return;
+    e.preventDefault();
+    const i = items.indexOf(document.activeElement);
+    const next = e.key === 'ArrowDown' ? (i + 1) % items.length : (i <= 0 ? items.length - 1 : i - 1);
+    items[next].focus();
+  }
+});
+
+/* ganti bahasa */
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.title = T('title');
+  $$('[data-i18n]').forEach(el => { el.textContent = T(el.dataset.i18n); });
+  $$('[data-i18n-r]').forEach(el => { el.dataset.ransom = T(el.dataset.i18nR); ransom(el); });
+  $$('[data-i18n-ph]').forEach(el => { el.placeholder = T(el.dataset.i18nPh); });
+  $$('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', T(el.dataset.i18nAria)); });
+  $('#lang-id').classList.toggle('on', lang === 'id');
+  $('#lang-en').classList.toggle('on', lang === 'en');
+  $('#lang').setAttribute('aria-label', T('lang_aria'));
+  renderSkills(); renderPlist(); showProject(curP, false); renderLinks(); renderChips();
+  setMusicOpen(!music.classList.contains('min'));
+  mNote.textContent = ''; status.textContent = '';
+  paintMusic();
+}
+$('#lang').addEventListener('click', () => {
+  if (busy) return;
+  const next = lang === 'id' ? 'en' : 'id';
+  run(next.toUpperCase(), () => {
+    lang = next;
+    try { localStorage.setItem('azka-lang', lang); } catch {}
+    applyLang();
+  });
+});
+
+/* splash */
+const splash = $('#splash');
+let entered = false;
+function enter(){
+  if (entered) return; entered = true;
+  sfx.hit(); sfx.swoosh();
+  const done = () => { splash.remove(); $('#view-home').classList.add('enter'); const f = $('#view-home .menu-btn'); if (f) f.focus({preventScroll:true}); };
+  if (reduce){ done(); return; }
+  splash.animate([{transform:'translateX(0) skewX(0deg)'},{transform:'translateX(115%) skewX(-18deg)'}], {duration:600, easing:'cubic-bezier(.7,0,.25,1)', fill:'forwards'}).finished.then(done);
+  $('#view-home').classList.add('enter');
+}
+splash.addEventListener('click', enter);
+splash.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); enter(); } });
+setTimeout(() => { $('#press').style.opacity = 1; }, reduce ? 0 : 1500);
+setTimeout(enter, reduce ? 300 : 3800);
+splash.focus();
+applyLang();
+</script>
+</body>
+</html>
